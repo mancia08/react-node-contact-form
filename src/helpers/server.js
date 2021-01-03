@@ -4,8 +4,8 @@ const cors = require("cors");
 const nodemailer = require("nodemailer");
 
 const ck = require('ckey')
-const email = ck.EMAIL
-const password = ck.PASSWORD
+const emailGoogle = ck.EMAIL
+const passwordGoogle = ck.PASSWORD
 
 const app = express();
 app.use(cors());
@@ -16,8 +16,8 @@ app.listen(5000, () => console.log("Server Running"));
 const contactEmail = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: email,
-      pass: password
+      user: emailGoogle,
+      pass: passwordGoogle
     },
   });
   
@@ -35,7 +35,7 @@ const contactEmail = nodemailer.createTransport({
     const message = req.body.message; 
     const mail = {
       from: name,
-      to: email,
+      to: emailGoogle,
       subject: "Contact Form Submission",
       html: `<p>Name: ${name}</p>
              <p>Email: ${email}</p>
